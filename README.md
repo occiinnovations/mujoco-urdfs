@@ -7,7 +7,7 @@ When you run the script, a menu pops up in your terminal allowing you to type a 
 ## Project Structure
 
 ```text
-MuJoCb/
+MuJoCo/
 ├── .gitignore          # Stops temporary files from uploading to GitHub
 ├── requirements.txt    # The short list of libraries you need (NumPy, MuJoCo)
 └── src/
