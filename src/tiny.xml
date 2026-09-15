@@ -1,0 +1,15 @@
+<mujoco model="simple_box">
+  <worldbody>
+    <geom type="plane" size="5 5 0.1" rgba="0.2 0.3 0.4 1"/>
+    
+    <body pos="0 0 1">
+      <joint name="hinge_0" type="hinge" axis="0 1 0"/>
+      <geom type="box" size="0.2 0.2 0.2" rgba="0.8 0.4 0 1"/>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor joint="hinge_0"/>
+  </actuator>
+</mujoco>
+

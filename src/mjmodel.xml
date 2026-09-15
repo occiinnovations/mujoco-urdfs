@@ -1,0 +1,54 @@
+<mujoco model="C:/Users/Caleb Brooks/Downloads/UR10e.urdf">
+  <!-- 1. The Silver Bullet: Autolimit and boundmass unfreezes the zero-mass compiler lock -->
+  <compiler angle="radian" autolimits="true" balanceinertia="true" boundmass="0.001"/>
+
+  <worldbody>
+    <geom size="5 5 0.005" type="box" rgba="0.2 0.3 0.4 1"/>
+    <geom size="0.095 0.05" pos="0 0 0.05" quat="3.26795e-07 -1 0 0" type="cylinder"/>
+    <body name="shoulder_link" pos="0 0 0.181">
+      <joint name="shoulder_pan_joint" range="-6.28319 6.28319" actuatorfrcrange="-330 330"/>
+      <geom size="0.077 0.0915" quat="3.26795e-07 -1 0 0" type="cylinder"/>
+      <geom size="0.076 0.0465" pos="0 0.05 0" quat="0.707107 0.707107 0 0" type="cylinder"/>
+      <body name="upper_arm_link" pos="0 0.176 0" quat="0.707107 0 0.707107 0">
+        <joint name="shoulder_lift_joint" range="-6.28319 6.28319" actuatorfrcrange="-330 330" axis="0 1 0"/>
+        <geom size="0.058 0.2315" pos="0 0 0.33" quat="3.26795e-07 -1 0 0" type="cylinder"/>
+        <geom size="0.076 0.05" pos="0 0 0.06" quat="3.26795e-07 -1 0 0" type="cylinder"/>
+        <geom size="0.077 0.0915" quat="0.707107 -0.707107 0 0" type="cylinder"/>
+        <geom size="0.061 0.0745" pos="0 -0.005 0.612" quat="0.707107 -0.707107 0 0" type="cylinder"/>
+        <body name="forearm_link" pos="0 -0.137 0.613">
+          <joint name="elbow_joint" range="-3.14159 3.14159" actuatorfrcrange="-150 150" axis="0 1 0"/>
+          <geom size="0.047 0.245" pos="0 0 0.307" quat="3.26795e-07 -1 0 0" type="cylinder"/>
+          <geom size="0.046 0.0645" pos="0 0.009 0.57" quat="0.707107 -0.707107 0 0" type="cylinder"/>
+          <geom size="0.058 0.025" pos="0 0.06 0" quat="0.707107 -0.707107 0 0" type="cylinder"/>
+          
+          <!-- FIXED: Added type="sphere" to prevent the file parsing crash -->
+          <geom size="0.058" type="sphere" pos="0 0.06 -0.025" quat="0.707107 -0.707107 0 0"/>
+          <geom size="0.058" type="sphere" pos="0 0.06 0.025" quat="0.707107 -0.707107 0 0"/>
+          
+          <geom size="0.057 0.015" pos="0 0 0.05" type="cylinder"/>
+          
+          <!-- FIXED: Added type="sphere" to anchor the forearm end joints -->
+          <geom size="0.057" type="sphere" pos="0 0.015 0.05"/>
+          <geom size="0.057" type="sphere" pos="0 -0.015 0.05"/>
+          
+          <body name="wrist_1_link" pos="0 0 0.571" quat="0.707107 0 0.707107 0">
+            <joint name="wrist_1_joint" range="-6.28319 6.28319" actuatorfrcrange="-54 54" axis="0 1 0"/>
+            <geom size="0.045 0.0375" pos="0 0.095 0" quat="0.707107 -0.707107 0 0" type="cylinder"/>
+            <geom size="0.048 0.063" pos="0 0.134 0.007" quat="3.26795e-07 -1 0 0" type="cylinder"/>
+            <body name="wrist_2_link" pos="0 0.135 0">
+              <joint name="wrist_2_joint" range="-6.28319 6.28319" actuatorfrcrange="-54 54"/>
+              <geom size="0.047 0.06" pos="0 0.007 0.1195" quat="0.707107 -0.707107 0 0" type="cylinder"/>
+              <geom size="0.046 0.0215" pos="0 0 0.0805" quat="3.26795e-07 -1 0 0" type="cylinder"/>
+              <body name="wrist_3_link" pos="0 0 0.12">
+                <joint name="wrist_3_joint" range="-6.28319 6.28319" actuatorfrcrange="-54 54" axis="0 1 0"/>
+                <geom size="0.045 0.024" pos="0 0.086 0" quat="0.707107 -0.707107 0 0" type="cylinder"/>
+                <geom size="0.032 0.009" pos="0 0.109 0" quat="0.707107 -0.707107 0 0" type="cylinder"/>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
+
